@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------
+   ROOT & BASE
+----------------------------------------------------- */
+html,
+body {
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: transparent; /* 👈 SUPER IMPORTANT */
+  overflow-x: hidden;      /* optionnel mais propre */
+}
+
+/* Couleurs par défaut des blobs (3 gris) */
+:root {
+  --blob1: rgba(165, 227, 245, 0.9);  /* gris slate clair */
+  --blob2: rgba(150, 154, 241, 0.9);  /* gris très clair */
+  --blob3: rgba(85, 120, 165, 0.85);    /* gris foncé / slate-800 */
+}
+
+/* ----------------------------------------------------
+   MASQUE POUR LE CAROUSEL DESIGN (fade d'opacité)
+----------------------------------------------------- */
+.style-carousel-mask {
+  position: relative;
+  /* fade d’opacité : 0 → 100% → 0 sur les côtés */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+/* Fumée grise pour le hover des cartes de pricing */
+.pricing-smoke-hover {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(148, 163, 184, 0.35), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(82, 95, 112, 0.22), transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(148, 163, 184, 0.2), transparent 55%);
+}
+
+/* ----------------------------------------------------
+   BLOBS GRIS ANIMÉS
+----------------------------------------------------- */
+.blob {
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  opacity: 0.75;
+  border-radius: 50%;
+  filter: blur(90px);
+  transition: background 600ms ease-out;
+  /* PAS de mix-blend-mode ici pour ne pas écraser `mix-blend-screen` de Tailwind */
+}
+
+/* Blob 1 : en haut à gauche-ish */
+.blob-1 {
+  background: var(--blob1);
+  top: 0%;
+  left: 10%;
+  transform: translate(-30%, -20%);
+  animation: blobFloat1 11s ease-in-out infinite alternate;
+}
+
+/* Blob 2 : vers le milieu / droite */
+.blob-2 {
+  background: var(--blob2);
+  top: 55%;
+  right: -5%;
+  transform: translate(10%, -10%);
+  animation: blobFloat2 14s ease-in-out infinite alternate;
+}
+
+/* Blob 3 : en bas */
+.blob-3 {
+  background: var(--blob3);
+  bottom: -10%;
+  left: 40%;
+  transform: translate(-20%, 10%);
+  animation: blobFloat3 17s ease-in-out infinite alternate;
+}
+
+/* ----------------------------------------------------
+   ORGANIC FLOAT ANIMATIONS
+----------------------------------------------------- */
+@keyframes blobFloat1 {
+  0% {
+    transform: translate(-30%, -20%) scale(1);
+  }
+  33% {
+    transform: translate(0%, -10%) scale(1.1);
+  }
+  66% {
+    transform: translate(-15%, 10%) scale(0.75);
+  }
+  100% {
+    transform: translate(-30%, -20%) scale(0.8);
+  }
+}
+
+@keyframes blobFloat2 {
+  0% {
+    transform: translate(10%, -10%) scale(1);
+  }
+  33% {
+    transform: translate(-5%, 0%) scale(1.12);
+  }
+  66% {
+    transform: translate(15%, 10%) scale(0.96);
+  }
+  100% {
+    transform: translate(10%, -10%) scale(1);
+  }
+}
+
+@keyframes blobFloat3 {
+  0% {
+    transform: translate(-20%, 10%) scale(1);
+  }
+  33% {
+    transform: translate(0%, -5%) scale(1.15);
+  }
+  66% {
+    transform: translate(-25%, 15%) scale(0.9);
+  }
+  100% {
+    transform: translate(-20%, 10%) scale(1);
+  }
+}
