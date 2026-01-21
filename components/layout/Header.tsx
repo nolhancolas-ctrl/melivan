@@ -1,10 +1,8 @@
-//components/layout/Header.tsx
+// components/layout/Header.tsx
 "use client";
-
 import { useEffect, useState } from "react";
 
 export default function Header() {
-  // Hero en vue au début → header caché
   const [isHeroInView, setIsHeroInView] = useState(true);
 
   useEffect(() => {
@@ -27,15 +25,14 @@ export default function Header() {
 
   return (
     <header
-      className={`
-        fixed top-4 left-1/2 -translate-x-1/2 z-40
-        transition-all duration-500
-        ${
-          visible
-            ? "opacity-100 translate-y-0"
-            : "pointer-events-none opacity-0 -translate-y-4"
-        }
-      `}
+      suppressHydrationWarning
+      className={[
+        "fixed top-4 left-1/2 -translate-x-1/2 z-40",
+        "transition-all duration-500",
+        visible
+          ? "opacity-100 translate-y-0"
+          : "pointer-events-none opacity-0 -translate-y-4",
+      ].join(" ")}
     >
       <div
         className="
@@ -73,7 +70,7 @@ export default function Header() {
         >
           <span>Book a call</span>
           <span className="text-[11px]" aria-hidden>
-            ↗
+            ☎
           </span>
         </a>
       </div>

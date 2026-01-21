@@ -6,6 +6,7 @@ import FAQSection from "@/components/sections/FaqSection";
 import FinalCTASection from "@/components/sections/FinalCallSection";
 import RevealSection from "@/components/layout/RevealSection";
 import Header from "@/components/layout/Header";
+import BottomNameSection from "@/components/sections/BottomNameSection";
 
 export default function Page() {
   return (
@@ -21,8 +22,8 @@ export default function Page() {
         relative z-10
         max-w-5xl mx-auto
         px-6 sm:px-8 lg:px-10
-        pt-24 pb-20
-        space-y-8 pb-10 sm:space-y-20
+        pt-24
+        space-y-8 sm:space-y-20
       "
     >
 
@@ -45,7 +46,11 @@ export default function Page() {
       <RevealSection id="contact">
         <FinalCTASection />
       </RevealSection>
+
     </main>
+
+    <BottomNameSection />
+
   </div>
   );
 }

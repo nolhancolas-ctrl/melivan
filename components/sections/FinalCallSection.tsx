@@ -1,7 +1,7 @@
-//components/sections/FinalCallSection.tsx
+// components/sections/FinalCallSection.tsx
 "use client";
-
 import { motion } from "framer-motion";
+import { PhoneIcon } from "@/components/icons/PhoneIcon";
 
 export default function FinalCallSection() {
   return (
@@ -55,7 +55,7 @@ export default function FinalCallSection() {
               "
             >
               <span>Book a call</span>
-              <span aria-hidden>↗</span>
+              <PhoneIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
